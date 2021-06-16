@@ -1,116 +1,57 @@
 from tkinter import *
 
-from tkinter import messagebox
-
-tasks_list = []
-
-counter = 1
+import calendar
 
 
-def inputError():
-    if enter_task_field.get() == "":
-        messagebox.showerror("Input Error")
-        return 0
-    return 1
+def showCal():
 
+    new_gui = Tk()
 
-def clear_taskNumberField():
-    task_number_field.delete(0.0, END)
+    new_gui.config(background="white")
 
+    new_gui.title("CALENDER")
 
-def clear_taskField():
-    enter_task_field.delete(0, END)
+    new_gui.geometry("550x600")
 
+    fetch_year = int(year_field.get())
 
-def insertTask():
+    cal_content = calendar.calendar(fetch_year)
 
-    global counter
+    cal_year = Label(new_gui, text=cal_content, font="Consolas 10 bold")
 
-    value = inputError()
+    cal_year.grid(row=5, column=1, padx=20)
 
-    if value == 0:
-        return
-
-    content = enter_task_field.get() + "\n"
-
-    tasks_list.append(content)
-
-    text_area.insert("end -1 chars", "[ " + str(counter) + " ] " + content)
-
-    counter += 1
-
-    clear_taskField()
-
-
-def delete():
-
-    global counter
-
-    if len(tasks_list) == 0:
-        messagebox.showerror("No task")
-        return
-
-    number = task_number_field.get(1.0, END)
-
-    if number == "\n":
-        messagebox.showerror("input error")
-        return
-
-    else:
-        task_no = int(number)
-
-    clear_taskNumberField()
-
-    tasks_list.pop(task_no - 1)
-
-    counter -= 1
-
-    text_area.delete(1.0, END)
-
-    for i in range(len(tasks_list)):
-        text_area.insert("end -1 chars", "[ " + str(i + 1) + " ] " + tasks_list[i])
+    new_gui.mainloop()
 
 
 if __name__ == "__main__":
 
     gui = Tk()
 
-    gui.configure(background="light green")
+    gui.config(background="white")
 
-    gui.title("ToDo App")
+    gui.title("CALENDER")
 
-    gui.geometry("250x300")
+    gui.geometry("250x140")
 
-    enter_task = Label(gui, text="Enter Your Task", bg="light green")
+    cal = Label(gui, text="CALENDAR", bg="dark gray", font=("times", 28, "bold"))
 
-    enter_task_field = Entry(gui)
+    year = Label(gui, text="Enter Year", bg="light green")
 
-    submit = Button(gui, text="Submit", fg="Black", bg="Red", command=insertTask)
+    year_field = Entry(gui)
 
-    text_area = Text(gui, height=5, width=25, font="lucida 13")
+    Show = Button(gui, text="Show Calendar", fg="Black", bg="Red", command=showCal)
 
-    task_number = Label(gui, text="Delete Task Number", bg="blue")
+    Exit = Button(gui, text="Exit", fg="Black", bg="Red", command=exit)
 
-    task_number_field = Text(gui, height=1, width=2, font="lucida 13")
+    cal.grid(row=1, column=1)
 
-    delete = Button(gui, text="Delete", fg="Black", bg="Red", command=delete)
+    year.grid(row=2, column=1)
 
-    exite = Button(gui, text="Exit", fg="Black", bg="Red", command=exit)
+    year_field.grid(row=3, column=1)
 
-    enter_task.grid(row=0, column=2)
+    Show.grid(row=4, column=1)
 
-    enter_task_field.grid(row=1, column=2, ipadx=50)
-
-    submit.grid(row=2, column=2)
-
-    text_area.grid(row=3, column=2, padx=10, sticky=W)
-
-    task_number.grid(row=4, column=2, pady=5)
-
-    task_number_field.grid(row=5, column=2)
-
-    delete.grid(row=6, column=2, pady=5)
-
-    exite.grid(row=7, column=2)
+    Exit.grid(row=6, column=1)
 
     gui.mainloop()
