@@ -1,6 +1,5 @@
 from os import system
 
-
 files = [
     "./forex/main.py",
     "./hangman-game/main.py",
