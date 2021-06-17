@@ -22,3 +22,6 @@ of [@swastika0015](https://twitter.com/swastika0015).
 - [Todo List](./todo-list/)
 - [Countdown Timer](./countdown-timer/)
 - [Calendar with GUI](./calendar-gui)
+
+## Next
+[UltiRequiem/python-projects-for-intermediates](https://github.com/UltiRequiem/python-projects-for-intermediates)
