@@ -24,4 +24,5 @@ of [@swastika0015](https://twitter.com/swastika0015).
 - [Calendar with GUI](./calendar-gui)
 
 ## Next
+
 [UltiRequiem/python-projects-for-intermediates](https://github.com/UltiRequiem/python-projects-for-intermediates)
