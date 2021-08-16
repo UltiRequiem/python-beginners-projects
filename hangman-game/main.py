@@ -15,8 +15,7 @@ def restart() -> None:
     secret_word = get_random_word()
 
 
-def display_board(HANGMAN, missed_letters, correct_letters,
-                  secret_word) -> None:
+def display_board(HANGMAN, missed_letters, correct_letters, secret_word) -> None:
     print(HANGMAN[len(missed_letters)] + "\n")
 
     print("Missed Letters:", end=" ")
@@ -28,7 +27,7 @@ def display_board(HANGMAN, missed_letters, correct_letters,
 
     for i in range(len(secret_word)):
         if secret_word[i] in correct_letters:
-            blanks = blanks[:i] + secret_word[i] + blanks[i + 1:]
+            blanks = blanks[:i] + secret_word[i] + blanks[i + 1 :]
 
     for letter in blanks:
         print(letter, end=" ")
@@ -73,20 +72,13 @@ if __name__ == "__main__":
                     found_all_letters = False
                     break
             if found_all_letters:
-                print(
-                    '\nYes! The secret word is "' +
-                    secret_word +
-                    '"! You have won!')
+                print('\nYes! The secret word is "' + secret_word + '"! You have won!')
                 game_is_done = True
         else:
             missed_letters = missed_letters + guess
 
             if len(missed_letters) == len(HANGMAN) - 1:
-                display_board(
-                    HANGMAN,
-                    missed_letters,
-                    correct_letters,
-                    secret_word)
+                display_board(HANGMAN, missed_letters, correct_letters, secret_word)
                 print(
                     "You have run out of guesses!\nAfter "
                     + str(len(missed_letters))
