@@ -41,6 +41,13 @@ def insertTask():
 
     clear_taskField()
 
+def sortTasks():
+    global tasks_list
+    tasks_list = sorted(tasks_list)
+    text_area.delete(1.0, END)
+    for i in range(len(tasks_list)):
+        text_area.insert("end -1 chars", "[ " + str(i + 1) + " ] " + tasks_list[i])
+
 
 def delete():
 
@@ -96,6 +103,9 @@ if __name__ == "__main__":
     delete = Button(gui, text="Delete", fg="Black", bg="Red", command=delete)
 
     exite = Button(gui, text="Exit", fg="Black", bg="Red", command=exit)
+
+    sort_button = Button(gui, text="Sort Tasks", fg="Black", bg="Green", command=sortTasks)
+    sort_button.grid(row=8, column=2, pady=5)
 
     enter_task.grid(row=0, column=2)
 
